@@ -1,4 +1,5 @@
 import styles from './SideBar.module.css';
+import NavMenu from "./NavMenu";
 
 const SideBar = () => {
     return (
