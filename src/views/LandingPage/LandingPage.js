@@ -2,7 +2,7 @@ import './LanginPage.module.css'
 import PageTemplate from "./../components/PageTemplate/PageTemplate";
 import {useState} from "react";
 import UntrackedItemController from "../../controllers/UntrackedItemController";
-import UntrackedItemCard from "../components/UntrackedItemCard/UntrackedItemCard";
+import UntrackedItemCard from "../components/UntrackedItem/UntrackedItemCard/UntrackedItemCard";
 
 function LandingPage() {
 
@@ -10,7 +10,7 @@ function LandingPage() {
 
     UntrackedItemController.List().then(
         (data) => {
-            var untrackedItems = UntrackedItemCard({untracked_items: data});
+            const untrackedItems = UntrackedItemCard.build({untracked_items: data});
             setItems(untrackedItems);
         }
     );
