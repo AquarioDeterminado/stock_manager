@@ -6,16 +6,18 @@ import UntrackedItemCard from "../components/UntrackedItemCard/UntrackedItemCard
 
 function LandingPage() {
 
-    let text = "a";
-    const [untrackedItems, setItems] = useState("...Loading")
+    const [untrackedItems, setItems] = useState("...Loading");
 
     UntrackedItemController.List().then(
         (data) => {
-            setItems(UntrackedItemCard({untracked_items: data}));
+            var untrackedItems = UntrackedItemCard({untracked_items: data});
+            setItems(untrackedItems);
         }
-    )
+    );
 
-    return (PageTemplate(untrackedItems))
+    const permissions = ["all", "atributor", "abatuer", "user-manager"];
+
+    return (PageTemplate(untrackedItems, permissions));
 }
 
 export default LandingPage;

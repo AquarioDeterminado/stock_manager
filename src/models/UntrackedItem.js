@@ -39,6 +39,8 @@ class UntrackedItem {
     get created_date() { return this._created_date; };
 
     get modified_date() { return this._modified_date; };
+
+    get itemType() { return 0; }; //TODO Associate with item type
 }
 
 module.exports = Object.freeze(UntrackedItem);
