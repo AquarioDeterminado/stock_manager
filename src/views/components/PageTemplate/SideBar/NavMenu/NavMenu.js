@@ -5,6 +5,7 @@ class NavMenu extends React.Component{
 
     constructor(props) {
         super(props);
+        this.permission = props.userPermissions;
         this.state = {
             navBar: "Loading."
         }
@@ -17,10 +18,10 @@ class NavMenu extends React.Component{
                                                     {name: "settings", permission: "all"}];
 
 
-    checkAvailableNavButtons(permissions) {
+    checkAvailableNavButtons() {
         var buttons = [];
         this.items.forEach((item) => {
-            if(true){ //TODO: Verify permissions
+            if(this.permission.includes(item.permission)){ //TODO: Verify permissions
                 var newButton = createElement("li", {className: styles.navItem},
                     createElement("button", {id: item.name + "-nav-button", className: styles.navButton}, item.name));
                 buttons.push(newButton);
