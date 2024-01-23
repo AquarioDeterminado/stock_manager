@@ -7,9 +7,7 @@ class SideBar extends React.Component{
         const permissions = this.props.userPermissions
         return (
             <div className={styles.sidebar}>
-                <ul className={styles}>
-                    <NavMenu userPermissions={permissions}/>
-                </ul>
+                <NavMenu userPermissions={permissions}/>
             </div>
         );
     }

@@ -19,14 +19,13 @@ class NavMenu extends React.Component{
 
     checkAvailableNavButtons(permissions) {
         var buttons = [];
-        for( let item in this.items){
+        this.items.forEach((item) => {
             if(true){ //TODO: Verify permissions
                 var newButton = createElement("li", {className: styles.navItem},
-                    createElement("button", {id: item.name + "-nav-button", className: styles.navButton},
-                        item.name));
+                    createElement("button", {id: item.name + "-nav-button", className: styles.navButton}, item.name));
                 buttons.push(newButton);
             }
-        }
+        });
         return buttons;
     }
 
