@@ -1,23 +1,25 @@
 import './LanginPage.module.css'
 import PageTemplate from "./../components/PageTemplate/PageTemplate";
-import {useState} from "react";
 import UntrackedItemController from "../../controllers/UntrackedItemController";
 import UntrackedItemCard from "../components/UntrackedItem/UntrackedItemCard/UntrackedItemCard";
+import {useState} from "react";
 
-function LandingPage() {
+function LandingPage(props) {
 
-    const [untrackedItems, setItems] = useState("...Loading");
+    const [canvas, SetCanvas] = useState("Loading...");
 
+    //Get Items
     UntrackedItemController.List().then(
         (data) => {
-            const untrackedItems = UntrackedItemCard.build({untracked_items: data});
-            setItems(untrackedItems);
-        }
-    );
+            var props  = {untracked_items: data};
+            const untrackedItems = UntrackedItemCard(props);
+            SetCanvas(untrackedItems);
+        });
 
     const permissions = ["all", "atributor", "abatuer", "user-manager"];
 
-    return (PageTemplate(untrackedItems, permissions));
+    //Render
+    return (PageTemplate(canvas, permissions));
 }
 
 export default LandingPage;

@@ -1,25 +1,20 @@
 class UntrackedItem {
-    constructor(id,quantity, item_id, created_date, modified_date) {
+    constructor(id,quantity, type, modified_date) {
         this._id = id
         this._quantity = quantity;
-        this._item_id = item_id;
-        this._created_date = created_date;
+        this._type = type;
         this._modified_date = modified_date;
     }
 
     static fromJSON(json) {
-        this._id = json.id;
-        this._quantity = json.quantity;
-        this._item_id = json.item_id;
-        this._created_date = json.created_date;
-        this._modified_date = json.modified_date;
+        return new UntrackedItem(json.item_id, json.quantity, ItemType.FromJson(json.item_type), json.modified_date);
     }
 
     static fromJSONArray(list) {
         var untracked_items = [];
         var item;
         for (let i = 0; i < list.length; i++) {
-            item = new UntrackedItem(list[i].id, list[i].quantity, list[i].item_id, list[i].createdAt, list[i].updatedAt);
+            item = new UntrackedItem.fromJSON(list[i]);
             untracked_items.push(item);
         }
         return untracked_items;
@@ -34,13 +29,12 @@ class UntrackedItem {
         this._modified_date = new Date();
     };
 
-    get item_id() { return this._item_id; };
+    get item_id() { return this._id; };
 
-    get created_date() { return this._created_date; };
 
     get modified_date() { return this._modified_date; };
 
-    get itemType() { return 0; }; //TODO Associate with item type
+    get itemType() { return this._type; }; //TODO Associate with item type
 }
 
 module.exports = Object.freeze(UntrackedItem);

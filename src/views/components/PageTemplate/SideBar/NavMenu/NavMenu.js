@@ -11,7 +11,7 @@ class NavMenu extends React.Component{
         }
     }
 
-    items = [ {name: "home", permission: "all"},
+    items = [ {name: "home", permission: "all", onClick: () => {document.replaceChild()}},
                                                     {name: "atribution", permission: "atributor"},
                                                     {name: "drop",permission: "abatuer"},
                                                     {name: "users", permission: "user-manager"},

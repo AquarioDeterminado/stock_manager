@@ -9,7 +9,7 @@ function PageTemplate(canvasInfo, permissions) {
                 <Header />
                 <div className={styles.container}>
                     <SideBar userPermissions={permissions}/>
-                    <div className={styles.canvas}>
+                    <div className={styles.canvas} id={"canvas"}>
                         {canvasInfo}
                     </div>
                 </div>
