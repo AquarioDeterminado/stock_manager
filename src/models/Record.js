@@ -13,14 +13,14 @@ class Record {
     }
 
     static fromJSON(json) {
-        return new Record(json.record_id, new User().fromJson(json.record_user), json.record_item, new RecordType().fromJson(json.record_type), json.record_description, json.record_date);
+        return new Record(json.record_id, new User().fromJson(json.record_user), json.record_item, RecordType().fromJSON(json.record_type), json.record_description, json.record_date);
     }
 
     static fromJSONArray(list) {
         var records = [];
         var record;
         for (let i = 0; i < list.length; i++) {
-            record = new Record.fromJSON(list[i]);
+            record = Record.fromJSON(list[i]);
             records.push(record);
         }
         return records;

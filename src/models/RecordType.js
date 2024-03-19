@@ -8,7 +8,7 @@ class RecordType {
     }
 
     static fromJSON(json) {
-        return new RecordType(json.record_type_id, json.record_type_name, new FileTemplate().fromJSON(json.record_type_file_template));
+        return new RecordType(json.record_type_id, json.record_type_name, FileTemplate.fromJSON(json.record_type_file_template));
     }
 }
 

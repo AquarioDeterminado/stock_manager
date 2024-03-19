@@ -8,14 +8,14 @@ class Facture {
     }
 
     static fromJSON(json) {
-        return new Facture(json.facture_id, json.facture_date, new UntrackedItem().fromJSONArray(json.facture_items));
+        return new Facture(json.facture_id, json.facture_date, UntrackedItem.fromJSONArray(json.facture_items));
     }
 
     static fromJSONArray(list) {
         var factures = [];
         var facture;
         for (let i = 0; i < list.length; i++) {
-            facture = new Facture.fromJSON(list[i]);
+            facture = Facture.fromJSON(list[i]);
             factures.push(facture);
         }
         return factures;

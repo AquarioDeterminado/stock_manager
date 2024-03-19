@@ -1,12 +1,41 @@
 import './App.css';
-import LandingPage from "./views/LandingPage/LandingPage";
-import React, {useState} from "react";
+import Home from "./views/pages/Home/Home";
+import React from "react";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import UntrackedInfo from "./views/pages/UntrackedInfo/UntrackedInfo";
+import LogIn from "./views/pages/LogIn/LogIn";
+import TrackedList from "./views/pages/TrackedList/TrackedList";
+import UserTrackedItems from "./views/pages/UserTrackedItems/UserTrackedItems";
+import MakeRecord from "./views/pages/MakeRecord/MakeRecord";
+import TrackedInfo from "./views/pages/TrackedInfo/TrackedInfo";
+import RecordsList from "./views/pages/RecordsList/RecordsList";
+import UserList from "./views/pages/UserList/UserList";
+import UserInfo from "./views/pages/UserInfo/UserInfo";
+import LandingPage from "./views/pages/LandingPage/LandingPage";
 
 function App(props) {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/login" element={<LogIn />} />
+                <Route path="/landing" element={<Home />} />
+                <Route path="/untracked_item/:id" element={<UntrackedInfo />} />
 
-    var [page, SetPage] = useState("Loading...")
+                <Route path="/tracked_items/list" element={<TrackedList />} />
+                <Route path="/tracked_items/user/:id" element={<UserTrackedItems />} />
+                <Route path="/tracked_items/make_record" element={<MakeRecord />} />
+                <Route path="/tracked_items/:id" element={<TrackedInfo />} />
 
-    return LandingPage();
+                <Route path="/untracked_items/records_list" element={<RecordsList />} />
+
+
+                <Route path="/users" element={<UserList />} />
+                <Route path="/users/:id" element={<UserInfo />} />
+
+            </Routes>
+        </BrowserRouter>
+    )
 }
 
 export default App;

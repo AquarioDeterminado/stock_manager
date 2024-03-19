@@ -2,7 +2,11 @@ import SideBar from "./SideBar/SideBar";
 import Header from "./Header/Header";
 import styles from './PageTemplate.module.css';
 
-function PageTemplate(canvasInfo, permissions) {
+function PageTemplate(props) {
+
+    var canvasInfo = props.canvas;
+    var permissions = props.permissions;
+
     return (
         <>
             <div className="App">

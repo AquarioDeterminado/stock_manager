@@ -1,26 +1,30 @@
+import Item from "./Item";
+
 class UntrackedItem {
-    constructor(id,quantity, type, modified_date) {
+    constructor(id, itemId, quantity, modified_date) {
         this._id = id
+        this._itemId = itemId;
         this._quantity = quantity;
-        this._type = type;
-        this._modified_date = modified_date;
+        this._modifiedDate = modified_date;
     }
 
     static fromJSON(json) {
-        return new UntrackedItem(json.item_id, json.quantity, ItemType.FromJson(json.item_type), json.modified_date);
+        return new UntrackedItem(json.unt_id, json.quantity, Item.fromJSON(json.item), json.updatedAt);
     }
 
     static fromJSONArray(list) {
         var untracked_items = [];
         var item;
         for (let i = 0; i < list.length; i++) {
-            item = new UntrackedItem.fromJSON(list[i]);
+            item = UntrackedItem.fromJSON(list[i]);
             untracked_items.push(item);
         }
         return untracked_items;
     }
 
     get id() { return this._id; }
+
+    get itemId() { return this._itemId; }
 
     get quantity() { return this._quantity; };
 
@@ -37,4 +41,4 @@ class UntrackedItem {
     get itemType() { return this._type; }; //TODO Associate with item type
 }
 
-module.exports = Object.freeze(UntrackedItem);
+export default UntrackedItem;

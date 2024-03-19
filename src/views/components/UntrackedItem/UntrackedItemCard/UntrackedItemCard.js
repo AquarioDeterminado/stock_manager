@@ -1,11 +1,15 @@
 import styles from "./UntrackedItemCard.module.css";
 import React from "react";
-import UntrackedItemInfo from "../UntrackedItemInfo/UntrackedItemInfo";
-import LandingPage from "../../../LandingPage/LandingPage";
+import { useNavigate } from "react-router-dom";
 
 function UntrackedItemCard (props) {
 
     let untracked_items = props.untracked_items;
+    let navigate = props.navigate;
+
+    function showInfo(){
+        navigate("/untracked_item/info");
+    }
 
     if (untracked_items === undefined) {
         return <></>;
@@ -18,7 +22,7 @@ function UntrackedItemCard (props) {
                             <div className={styles.notifemblem} onClick={() => changeStock(1)}>
                                 <p className="card-notif_number">{untracked_item.quantity}</p>
                             </div>
-                            <div className={styles.card} onClick={() => showInfo(untracked_item)}>
+                            <div className={styles.card} onClick={() => showInfo()}>
                                 <div className="card-body">
                                     <h5 className="card-title">{untracked_item.type}</h5>
                                     <p className="card-observation">Observations</p>
@@ -35,13 +39,6 @@ function UntrackedItemCard (props) {
 
 function changeStock(id) {
     console.log(id)
-}
-
-function showInfo(item){
-    /*const canvas = document.getElementById("canvas");
-    const info = new UntrackedItemInfo().render();
-    LandingPage.changeCanvas(info);
-    canvas.replaceChild(info, canvas.childNodes[0]);*/
 }
 
 export default UntrackedItemCard;
