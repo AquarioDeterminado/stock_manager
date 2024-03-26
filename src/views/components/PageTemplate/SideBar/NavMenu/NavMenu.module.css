@@ -33,5 +33,7 @@
     background-color: #fff;
     border: none;
     cursor: pointer;
+
+    font-size: small;
     text-align: left;
 }

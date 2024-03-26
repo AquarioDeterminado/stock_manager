@@ -7,17 +7,18 @@ import styles from './Home.module.css';
 import BillForm from "../../components/BillForm/BillForm";
 import ReactDOM from "react-dom/client";
 import {useNavigate} from "react-router-dom";
+import {mustBeLoggedIn} from "../../../controllers/LogInController";
 
-function Home(props) {
-
-    const [canvas, SetCanvas] = useState("Loading...");
+function Home() {
     const navigate = useNavigate();
+    const [canvas, SetCanvas] = useState("Loading...");
 
     useEffect(() => {
+        mustBeLoggedIn(navigate);
+
         //Get Items
-        UntrackedItemController.List().then(
-            (data) => {
-                var props  = {untracked_items: data, navigate: navigate};
+        UntrackedItemController.List().then((list) => {
+                var props  = {untracked_items: list, navigate: navigate};
                 const untrackedItems = UntrackedItemCard(props);
                 SetCanvas((
 
@@ -27,10 +28,10 @@ function Home(props) {
                     </div>
                 ));
             });
-    }, []);
+    }, [navigate]);
 
     //Render
-    return (<PageTemplate canvas={canvas} permissions={permissions}/> );
+    return (<PageTemplate canvas={canvas}/> );
 }
 
 function addBill(){

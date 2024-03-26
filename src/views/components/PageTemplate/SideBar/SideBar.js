@@ -4,10 +4,9 @@ import NavMenu from "./NavMenu/NavMenu";
 
 class SideBar extends React.Component{
     render () {
-        const permissions = this.props.userPermissions
         return (
             <div className={styles.sidebar}>
-                <NavMenu userPermissions={permissions}/>
+                <NavMenu />
             </div>
         );
     }

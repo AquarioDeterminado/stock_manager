@@ -13,14 +13,16 @@ import UserList from "./views/pages/UserList/UserList";
 import UserInfo from "./views/pages/UserInfo/UserInfo";
 import LandingPage from "./views/pages/LandingPage/LandingPage";
 
-function App(props) {
+function App() {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/login" element={<LogIn />} />
-                <Route path="/landing" element={<Home />} />
-                <Route path="/untracked_item/:id" element={<UntrackedInfo />} />
+
+                <Route path="/home" element={<Home />} />
+                <Route path="/untracked_items/:id" element={<UntrackedInfo />} />
+                <Route path="/untracked_items/addBill" element={<UntrackedInfo />} />
 
                 <Route path="/tracked_items/list" element={<TrackedList />} />
                 <Route path="/tracked_items/user/:id" element={<UserTrackedItems />} />

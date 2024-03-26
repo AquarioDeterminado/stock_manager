@@ -9,7 +9,7 @@ class UntrackedItem {
     }
 
     static fromJSON(json) {
-        return new UntrackedItem(json.unt_id, json.quantity, Item.fromJSON(json.item), json.updatedAt);
+        return new UntrackedItem(json.unt_id, json.quantity, new Item(json.itemId, json.itemTypeId), json.updatedAt);
     }
 
     static fromJSONArray(list) {

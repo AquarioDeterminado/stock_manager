@@ -3,7 +3,7 @@ import UntrackedItemInfo from "../../components/UntrackedItem/UntrackedItemInfo/
 
 function UntrackedInfo() {
   return (
-    <PageTemplate canvas={<UntrackedItemInfo />} permissions={["all", "atributor", "abatuer", "user-manager"]} />
+    <PageTemplate canvas={<UntrackedItemInfo />}  />
   );
 }
 
